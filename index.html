@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#17252c">
+  <meta name="description" content="استودیو موبایلی طراحی نمای سنگی خورشید نو">
+  <title>استودیو نمای سنگی | خورشید نو</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./assets/icons/icon-192.png">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brandmark">خ</div>
+  <div class="brandtext"><strong>استودیو نمای سنگی</strong><span>خورشید نو · نسخه موبایل</span></div>
+  <button class="iconbtn" id="installBtn" title="نصب روی گوشی" aria-label="نصب روی گوشی">＋</button>
+</header>
+<main>
+  <section class="screen active" id="screen-design">
+    <div class="headline"><div><span class="eyebrow">CUSTOMER FACADE STUDIO</span><h1>طراحی نمای ساختمان</h1><p>سنگ را انتخاب کنید و نتیجه را زنده ببینید.</p></div><span class="live-dot">آماده</span></div>
+    <div class="viewer-card">
+      <div class="viewer-top"><div><b>پیش‌نمایش حجمی نما</b><small>مدل نمونه ۴ طبقه · قابل لمس</small></div><div class="viewer-actions"><button class="tinybtn" id="exportPng">ذخیره تصویر</button><button class="tinybtn" id="resetView">بازنشانی</button></div></div>
+      <div class="canvas-wrap"><canvas id="facadeCanvas" aria-label="پیش‌نمایش نمای ساختمان"></canvas><div class="canvas-hint">برای انتخاب، روی یکی از بخش‌های نما لمس کنید</div></div>
+      <div class="view-tools">
+        <button class="toolbtn" id="flipView">نمای سمت مقابل <span>↔</span></button>
+        <div class="zoomtools"><button class="roundbtn" id="zoomOut">−</button><span id="zoomValue">100%</span><button class="roundbtn" id="zoomIn">＋</button></div>
+      </div>
+    </div>
+    <div class="section-head"><div><h2>بخش انتخاب‌شده</h2><p id="selectedZoneText">قسمت میانی نما</p></div><span class="mini-chip" id="selectedChip">نمای جلو</span></div>
+    <div class="zone-grid" id="zoneGrid">
+      <button class="zone selected" data-zone="front-left">نمای جلو · چپ</button>
+      <button class="zone" data-zone="front-center">نمای جلو · وسط</button>
+      <button class="zone" data-zone="front-right">نمای جلو · راست</button>
+      <button class="zone" data-zone="right-side">نمای جانبی راست</button>
+      <button class="zone" data-zone="left-side">نمای جانبی چپ</button>
+    </div>
+    <div class="section-head"><div><h2>طرح‌های آماده</h2><p>یک ترکیب آماده را برای شروع انتخاب کنید.</p></div></div>
+    <div class="preset-row"><button data-preset="classic">کلاسیک</button><button data-preset="warm">گرم و طبیعی</button><button data-preset="modern">مدرن</button><button data-preset="contrast">تضاد لوکس</button></div>
+    <div class="section-head"><div><h2>انتخاب سنگ</h2><p>برای اعمال روی بخش انتخاب‌شده، سنگ را لمس کنید.</p></div><button class="textbtn" id="showAllMaterials">همه سنگ‌ها</button></div>
+    <div class="material-grid" id="materialGrid"></div>
+    <div class="action-row"><button class="secondary" id="randomBtn">✦ طرح تصادفی</button><button class="primary" id="saveDesignBtn">ذخیره طرح</button></div>
+  </section>
+
+  <section class="screen" id="screen-project">
+    <div class="headline"><div><span class="eyebrow">PROJECT & ESTIMATE</span><h1>پروژه و برآورد</h1><p>مشخصات مشتری و قیمت سنگ را وارد کنید.</p></div></div>
+    <div class="panel">
+      <label>نام مشتری یا کارفرما<input id="customerName" placeholder="مثلاً آقای احمدی" autocomplete="name"></label>
+      <label>نام پروژه<input id="projectName" placeholder="مثلاً ساختمان مسکونی"></label>
+      <div class="two-fields"><label>عرض نما (متر)<input id="facadeWidth" type="number" min="1" step="0.5" value="24"></label><label>ارتفاع نما (متر)<input id="facadeHeight" type="number" min="1" step="0.5" value="12"></label></div>
+      <div class="two-fields"><label>عمق ساختمان (متر)<input id="buildingDepth" type="number" min="0" step="0.5" value="10"></label><label>درصد بازشوها<input id="openingsRate" type="number" min="0" max="80" step="1" value="15"></label></div>
+      <div class="two-fields"><label>قیمت هر مترمربع (تومان)<input id="unitPrice" type="number" min="0" step="10000" value="1500000"></label><label>درصد پرت و برش<input id="wasteRate" type="number" min="0" max="50" step="1" value="10"></label></div>
+      <button class="primary full" id="calcBtn">محاسبه برآورد</button>
+    </div>
+    <div class="estimate-card" id="estimateCard">
+      <div class="estimate-title"><span>برآورد اولیه پروژه</span><span class="mini-chip">قابل ویرایش</span></div>
+      <div class="estimate-total"><strong id="estimateTotal">—</strong><span>تومان</span></div>
+      <div class="estimate-lines"><div><span>مساحت خالص پس از کسر بازشوها</span><b id="estimateArea">—</b></div><div><span>با احتساب پرت و برش</span><b id="estimateWaste">—</b></div><div><span>قیمت واحد</span><b id="estimateUnit">—</b></div></div>
+      <p class="disclaimer">این برآورد مقدماتی است و هزینه زیرسازی، اسکوپ، نصب، حمل و مالیات را شامل نمی‌شود.</p>
+      <button class="secondary full" id="exportCsv">دانلود پیش‌فاکتور CSV</button>
+    </div>
+    <div class="panel"><div class="section-head inside"><div><h2>حالت نورپردازی</h2><p>ظاهر نما را برای زمان‌های مختلف ببینید.</p></div></div><div class="segmented"><button class="active" data-light="day">روز</button><button data-light="sunset">غروب</button><button data-light="night">شب</button></div></div>
+  </section>
+
+  <section class="screen" id="screen-saved">
+    <div class="headline"><div><span class="eyebrow">SAVED CONCEPTS</span><h1>طرح‌های ذخیره‌شده</h1><p>طرح‌ها روی همین گوشی ذخیره می‌شوند.</p></div></div>
+    <div id="savedList" class="saved-list"></div>
+    <div class="panel"><h2>افزودن سنگ از گالری گوشی</h2><p class="muted">از سنگ واقعی کارخانه عکس بگیرید یا تصویری را از گالری انتخاب کنید.</p><label class="upload-label">＋ انتخاب عکس سنگ<input type="file" id="stoneUpload" accept="image/*" capture="environment"></label><p class="small-note">عکس به کتابخانه همین مرورگر اضافه می‌شود و می‌توانید آن را روی نما اعمال کنید.</p></div>
+    <div class="panel"><h2>کتابخانه سنگ‌ها</h2><p class="muted">۱۲ بافت نمونه به‌صورت پیش‌فرض در دسترس است.</p><div id="librarySummary" class="library-summary"></div></div>
+  </section>
+</main>
+<nav class="bottom-nav">
+  <button class="navitem active" data-screen="design"><span>▦</span><small>طراحی نما</small></button>
+  <button class="navitem" data-screen="project"><span>◫</span><small>پروژه</small></button>
+  <button class="navitem" data-screen="saved"><span>◇</span><small>ذخیره‌ها</small></button>
+</nav>
+<dialog id="saveDialog" class="app-dialog"><form method="dialog"><button class="dialog-close" aria-label="بستن">×</button><span class="eyebrow">SAVE DESIGN</span><h2>ذخیره این طرح</h2><label>عنوان طرح<input id="designTitle" placeholder="مثلاً نمای عباس‌آباد و مشکی"></label><button class="primary full" id="confirmSave" value="save">ذخیره طرح</button></form></dialog>
+<div class="toast" id="toast" role="status"></div>
+<script src="./app.js"></script>
+</body></html>

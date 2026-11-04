@@ -1,0 +1,15 @@
+راهنمای خیلی کوتاه بارگذاری در GitHub
+
+۱) در github.com وارد شوید.
+۲) New repository را بزنید و نام stone-facade-mobile را وارد کنید.
+۳) مخزن را Public و سپس Create repository کنید.
+۴) Add file و بعد Upload files را بزنید.
+۵) همه فایل‌های داخل این پوشه را بارگذاری کنید. فایل index.html باید مستقیماً در صفحه اصلی مخزن باشد.
+۶) Commit changes را بزنید.
+۷) Settings سپس Pages را باز کنید.
+۸) Deploy from a branch، شاخه main و پوشه /(root) را انتخاب کنید و Save بزنید.
+۹) نشانی ساخته‌شده را با گوشی باز کنید.
+۱۰) در اندروید: Chrome > سه نقطه > Install app / Add to Home screen.
+    در آیفون: Safari > Share > Add to Home Screen.
+
+توجه: نسخه موبایل برای طراحی و ارائه سریع نماست؛ فایل‌های Rhino/3DM را مستقیماً ویرایش نمی‌کند.
